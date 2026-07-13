@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Companion One — Community Edition server
+ALIOS ONE Chat — Community Edition server
 =========================================
 A tiny local server that:
   1. Serves the app (index.html)
@@ -58,7 +58,7 @@ def load_key():
 API_KEY = load_key()
 BACKUP_DIR.mkdir(exist_ok=True)
 
-app = FastAPI(title="Companion One", version="1.0.0")
+app = FastAPI(title="ALIOS ONE Chat", version="1.1.0")
 
 
 # ---------------- chat proxy ----------------
@@ -71,8 +71,8 @@ async def chat_proxy(request: Request):
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://companion-one.local",
-        "X-Title": "Companion One",
+        "HTTP-Referer": "https://aliosone.one",
+        "X-Title": "ALIOS ONE Chat",
     }
     if payload.get("stream"):
         def gen():
@@ -150,14 +150,14 @@ def load_state():
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "app": "Companion One CE", "version": "1.0.0"}
+    return {"status": "ok", "app": "ALIOS ONE Chat CE", "version": "1.1.0"}
 
 
 @app.get("/", response_class=HTMLResponse)
 def serve_app():
     idx = HERE / "index.html"
     if not idx.exists():
-        return HTMLResponse("<h1>Companion One</h1><p>index.html missing "
+        return HTMLResponse("<h1>ALIOS ONE Chat</h1><p>index.html missing "
                             "next to server.py</p>", status_code=404)
     return HTMLResponse(idx.read_text(encoding="utf-8"),
                         headers={"Cache-Control": "no-store"})
@@ -165,7 +165,7 @@ def serve_app():
 
 if __name__ == "__main__":
     print("=" * 56)
-    print("  Companion One — Community Edition")
+    print("  ALIOS ONE Chat — Community Edition")
     print(f"  Open:  http://localhost:{PORT}")
     print("  Your API key stays on this machine. Always.")
     print("=" * 56)

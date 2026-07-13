@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "============================================"
-echo "  Companion One - Community Edition"
+echo "  ALIOS ONE Chat - Community Edition"
 echo "============================================"
 command -v python3 >/dev/null || { echo "Python 3 not found — install it first."; exit 1; }
 python3 -m pip install -r requirements.txt

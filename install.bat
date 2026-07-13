@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   Companion One - Community Edition
+echo   ALIOS ONE Chat - Community Edition
 echo ============================================
 where python >nul 2>nul
 if errorlevel 1 (

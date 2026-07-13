@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b0f1a">
-<title>Companion One</title>
+<title>ALIOS ONE Chat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -173,7 +173,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 <body>
 
 <aside id="sidebar" class="hidden">
-  <div class="side-head"><span class="brand">Companion <span class="one">One</span></span></div>
+  <div class="side-head"><span class="brand">ALIOS <span class="one">ONE</span> Chat</span></div>
   <button id="btnNew">+ New chat</button>
   <button id="btnMem">🧠 Memory cards</button>
   <input id="search" placeholder="🔍 search chats…">
@@ -239,8 +239,8 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
       <input id="setSum" type="number" min="0" max="200"></div>
   </div>
   <div class="field">
-    <label>System prompt (your companion's personality)</label>
-    <textarea id="setSys" rows="6" placeholder="Describe who your companion is, how they talk, what they care about…"></textarea>
+    <label>System prompt (your assistant's role and style)</label>
+    <textarea id="setSys" rows="6" placeholder="Describe your assistant's role, domain expertise and communication style…"></textarea>
   </div>
   <div class="field">
     <div class="hint" id="setConn">—</div>
@@ -263,9 +263,9 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 <div id="memOvl" class="ovl"><div class="panel">
   <h2>🧠 Memory cards</h2>
   <div class="hint" style="margin-bottom:10px">
-    Cards are your companion's long-term memory. Every <b>active</b> card is sent
-    with each message — facts about you, shared history, inside jokes, anything
-    worth remembering. Toggle cards off to save tokens without deleting them.
+    Cards are your assistant's long-term memory. Every <b>active</b> card is sent
+    with each message — project context, working preferences, terminology, key
+    decisions, anything worth remembering. Toggle cards off to save tokens without deleting them.
   </div>
   <div id="cardList"></div>
   <div class="acts">
@@ -277,7 +277,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 <!-- Summary viewer -->
 <div id="sumOvl" class="ovl"><div class="panel">
   <h2>📝 Session summary</h2>
-  <div class="hint">What your companion knows about the older part of this conversation.</div>
+  <div class="hint">What your assistant knows about the older part of this conversation.</div>
   <pre id="sumText"></pre>
   <div class="acts">
     <button class="btn ghost" id="sumCopy">⧉ copy</button>
@@ -290,7 +290,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
 
 <script>
 'use strict';
-/* Companion One — Community Edition
+/* ALIOS ONE Chat — Community Edition
    Memory = manual cards, fully in your hands. */
 
 const DEFAULTS = {
@@ -674,7 +674,7 @@ async function maybeSummarize(chat){
 function renderCards(){
   const el=$('#cardList'); el.innerHTML='';
   if (!state.cards.length){
-    el.innerHTML='<div class="hint" style="text-align:center;padding:14px">No cards yet. Create the first memory your companion should always carry.</div>';
+    el.innerHTML='<div class="hint" style="text-align:center;padding:14px">No cards yet. Create the first memory your assistant should always carry.</div>';
   }
   state.cards.forEach((card,i)=>{
     const d=document.createElement('div');
@@ -761,7 +761,7 @@ $('#btnExport').onclick=()=>{
   const blob=new Blob([JSON.stringify(state,null,1)],{type:'application/json'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download=`companion_one_${new Date().toISOString().slice(0,10)}.json`;
+  a.download=`alios_one_chat_${new Date().toISOString().slice(0,10)}.json`;
   a.click(); toast('exported (no secrets inside — there are none)');
 };
 $('#btnImport').onclick=()=>$('#importPick').click();
